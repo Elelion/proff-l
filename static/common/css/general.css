@@ -1,0 +1,241 @@
+:root {
+  --orange-color: #FA840B;
+  --blue-color: #2DABFF;
+}
+
+
+/**/
+
+
+/* LOGO -------------------------------------------------------------------- */
+.main-logo__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 0.4;
+}
+
+.main-logo__center img {
+  margin-right: 10px;
+}
+
+.main-logo__center span {
+  margin-top: 26px;
+}
+
+
+/**/
+
+
+/* BLOCK-ITEM -------------------------------------------------------------- */
+@media (max-width: 1199px) {
+  .image-text__block-item {
+    height: 490px;
+  }
+}
+
+@media (max-width: 991px) {
+  .image-text__block-item {
+    height: 440px;
+  }
+}
+
+@media (max-width: 767px) {
+  .image-text__block-item {
+    height: 460px;
+  }
+}
+
+.image-text__block-item_image {
+  border-radius: 8px;
+}
+
+
+/**/
+
+
+/* различный текст --------------------------------------------------------- */
+
+/* текст для header - ДЛЯ главных страниц приложений */
+.header-menu__wrapper_color-white .header__without-scroll_title,
+.header-menu__wrapper_color-white .header__without-scroll_slogan {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.53);
+}
+
+/* текст для header - НЕ для главных страниц приложений */
+.header-menu__wrapper_color-dark .header__without-scroll_title {
+  color: #1E2022 !important;
+}
+.header-menu__wrapper_color-dark .header__without-scroll_slogan {
+  color: #3C4043 !important;
+}
+
+/* header меню текст */
+.header-menu__dark-color li a span {
+  color: #1E2022 !important;
+}
+
+/* разделитель текста (полоска) */
+.heading-text.heading-section h2:before {
+  background-color: var(--orange-color) !important;
+}
+
+/* меню */
+#mainMenu nav > ul > li:hover > a,
+#mainMenu nav > ul > li > ul > li:hover > a {
+  color: var(--orange-color) !important;
+}
+
+
+.footer-menu__link a:hover {
+  color: var(--orange-color) !important;
+}
+
+
+/**/
+
+
+/* различные элементы ------------------------------------------------------ */
+#scrollTop:after, #scrollTop:before {
+  background-color: var(--orange-color) !important;
+}
+
+.btn__color-orange {
+  background: var(--orange-color) !important;
+  border: none !important;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.7) !important;
+  border-radius: 5px !important;
+}
+
+/* кнопка - ссылка */
+.btn-link__box {
+  margin-bottom: 20px !important;
+  margin-top: 40px !important;
+}
+
+.btn-link:hover {
+  color: var(--orange-color);
+}
+
+.btn-link__color-custom {
+  color: var(--orange-color);
+}
+
+@media (max-width: 991px) {
+  .btn-header__callback {
+    float: left !important;
+  }
+}
+
+/* кнопки для слайдера */
+.flickity-prev-next-button:hover {
+  background: var(--orange-color) !important;
+}
+
+/* кнопки для увеличения в портфолио */
+.icon-maximize:hover {
+  background: var(--orange-color) !important;
+  border-color: var(--orange-color) !important;
+}
+
+/* цвет для текста */
+.font__color-orange {
+  color: var(--orange-color) !important;
+}
+
+.font__color-black {
+  color: black !important;
+}
+
+/* whatsapp float */
+.whatsapp-float {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 64px;
+  height: 64px;
+  background-color: #28a745;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: pulse__whatsapp-float 2s infinite;
+}
+
+.whatsapp-float i {
+  color: white;
+  font-size: 32px;
+}
+
+@keyframes pulse__whatsapp-float {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(0, 255, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
+  }
+}
+/* end: whatsapp float */
+
+/* phone-ring float */
+.phone__ring-float {
+  position: fixed;
+  bottom: 180px;
+  right: 20px;
+  width: 64px;
+  height: 64px;
+  background-color: var(--orange-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: pulse__phone_ring-float 1.5s infinite;
+}
+
+.phone__ring-float i {
+  color: white;
+  font-size: 32px;
+}
+
+@keyframes pulse__phone_ring-float {
+  0% {
+    box-shadow: 0 0 0 0 rgba(250, 132, 11, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(0, 255, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
+  }
+}
+/* end: phone-ring float */
+
+
+/**/
+
+
+/* ПЕРЕОПРЕДЕЛЕНО ---------------------------------------------------------- */
+
+/* контакты */
+.testimonial-item {
+  padding: 10px !important;
+}
+
+@media (max-width: 991px) {
+  .testimonial-box {
+    width: 100% !important;
+  }
+}
+
+/* end: контакты */
+
+
+/* end: ПЕРЕОПРЕДЕЛЕНО ---------------------------------------------------------- */

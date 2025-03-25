@@ -1,0 +1,126 @@
+{% load static %}
+
+
+{# ** #}
+
+
+<div id="modalLogin" class="modal no-padding" style="max-width: 780px;">
+  <div class="row">
+    <div class="col-md-6 no-padding"
+         style="
+           background: transparent url({% static "/modal/feedback.png" %}) no-repeat scroll center top / cover;
+           height:470px;">
+    </div>
+    <div class="col-md-6">
+      <div class="p-40 p-t-60 p-xs-20">
+        <h3>Оставить заявку</h3>
+        <form method="POST"
+              class="form-grey-fields"
+              action="{% url 'home:feedback_modal' %}"
+              id="feedback__form"
+              onsubmit="return checkFormModalData();"
+        >
+          {% csrf_token %}
+
+          <input type="hidden" name="data-type" value="modal">
+
+          <div class="form-group">
+            <input type="text"
+                   name="feed-back-modal-name"
+                   value=""
+                   class="form-control"
+                   aria-required="true"
+                   aria-invalid="false"
+                   placeholder="Ваше Имя"
+                   maxlength="20"
+            />
+          </div>
+
+          <div class="form-group m-b-20">
+            <input type="tel"
+                   id="feed-back-modal-phone"
+                   name="feed-back-modal-phone"
+                   value=""
+                   class="form-control"
+                   aria-required="true"
+                   aria-invalid="false"
+                   placeholder="+7(000)000-00-00"
+            />
+
+          </div>
+
+          <div class="text-start form-group">
+            <input type="submit"
+                   value="Отправить"
+                   class="btn btn__color-orange"
+                   onclick="checkFormModalData()"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ** -->
+
+
+<script>
+  function checkFormModalData() {
+    let name = document.getElementsByName("feed-back-modal-name")[0];
+    let phone = document.getElementsByName("feed-back-modal-phone")[0];
+
+    // Проверка на русские буквы в имени
+    let russianLettersPattern = /^[А-Яа-яЁё]+$/;
+
+    // Проверка на длину имени
+    if (name.value.length < 2 || name.value.length > 20) {
+      name.style.border = "2px solid #fbca19";
+      return false;
+    } else {
+      name.style.border = "1px solid #ccc";
+    }
+
+    if (!russianLettersPattern.test(name.value)) {
+      name.style.border = "2px solid #fbca19";
+      return false;
+    }
+
+    // **
+
+    // Проверка телефона
+    let inputValue = phone.value;
+
+    /**
+     * Паттерн для проверки формата:
+     *
+     * +7-123-456-78-90
+     * +7(123)-456-78-90
+     * +7-1234567890
+     * +71234567890
+     * 71234567890
+     * 7(123)456-78-90
+     */
+    let phonePattern = /^\+?[78][-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/;
+
+    if (!phonePattern.test(inputValue)) {
+      phone.style.border = "2px solid #fbca19"
+      return false;
+    } else {
+      phone.style.border = "1px solid #ccc";
+    }
+
+    return true;
+  }
+</script>
+
+<script>
+  let element = document.getElementById('feed-back-modal-phone');
+  let maskOptions = {
+    mask: '+7(000)000-00-00',
+    lazy: false
+  }
+
+  let mask = new IMask(element, maskOptions);
+</script>

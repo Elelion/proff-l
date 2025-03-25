@@ -1,0 +1,78 @@
+{% extends 'common/layout.html' %}
+{% load static %}
+
+
+{# ** #}
+
+
+{% block title %}{{ SEO_title }}{% endblock %}
+{% block content %}
+
+  <!-- DESCRIPTION -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <h2 class="text-medium m-t-0">{{ glazing_frameless.title }}</h2>
+          <div class="seperator"></div>
+          <p class="lead">{{ glazing_frameless.description }}</p>
+        </div>
+
+        <div class="col-lg-7">
+          <img src="{% static 'home/images/glazing_frameless/' %}{{ glazing_frameless.image_name }}"
+               class="img-fluid"
+               alt="{{ glazing_frameless.title }}">
+        </div>
+      </div>
+
+      <div class="row m-t-40">
+        <div class="col-lg-4">
+          <img src="{% static 'home/images/glazing_frameless/' %}{{ glazing_frameless.image_additional_1 }}" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-4">
+          <img src="{% static 'home/images/glazing_frameless/' %}{{ glazing_frameless.image_additional_2 }}" class="img-fluid" alt="">
+        </div>
+        <div class="col-lg-4">
+          <img src="{% static 'home/images/glazing_frameless/' %}{{ glazing_frameless.image_additional_3 }}" class="img-fluid" alt="">
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- end: DESCRIPTION -->
+
+  <!-- ACCORDION & TEXT -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3>Преимущества</h3>
+          <div class="accordion toggle fancy clean">
+
+            {% for advantage in glazing_frameless.glazing_advantage.all %}
+              <div class="ac-item {% if forloop.counter == 1 %}ac-active{% endif %}">
+                <h5 class="ac-title font-weight-600">{{ advantage.title }}</h5>
+                <div class="ac-content">{{ advantage.description }}</div>
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <h3>Описание</h3>
+          <p>{{ glazing_frameless.text|safe }}</p>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+  <!-- end: ACCORDION & TEXT -->
+
+  <div class="seperator m-b-0"></div>
+
+
+
+{% endblock %}

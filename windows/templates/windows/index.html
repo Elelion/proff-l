@@ -1,0 +1,299 @@
+{% extends 'common/layout.html' %}
+{% load static %}
+
+
+{# ** #}
+
+
+{% block title %}{{ SEO_title }}{% endblock %}
+{% block content %}
+
+  <!-- INSPIRO SLIDER -->
+  <div id="slider"
+       class="inspiro-slider slider-fullscreen dots-creative"
+       data-height-xs="360"
+       data-autoplay="4700"
+       data-animate-in="fadeIn"
+       data-animate-out="fadeOut"
+       data-items="1" data-loop="true"
+       data-fade="true"
+       data-autoplay="true"
+  >
+
+    <!-- Slide's -->
+    <div class="slide" data-bg-video="{% static 'slider/' %}{{ sliders.video_html }}">
+      <div class="bg-overlay"></div>
+
+      <div class="container">
+        <div class="slide-captions text-center text-light">
+          <!-- Captions -->
+          <h1 data-caption-animate="zoom-out" class="text-shadow-dark">{{ sliders.title|safe }}</h1>
+          <p class="text-shadow-dark">{{ sliders.description|safe }}</p>
+          <!-- end: Captions -->
+        </div>
+      </div>
+    </div>
+    <!-- end: Slide's -->
+
+  </div>
+  <!--end: INSPIRO SLIDER -->
+
+
+  <!-- ABOUT - FANCY BOXES -->
+  <section id="windows_about" class="box-fancy section-fullwidth">
+    <div class="container">
+      <div class="heading-text heading-section text-center">
+        <h2>Надежные ПВХ окна от производителя</h2>
+      </div>
+
+      <div class="row">
+
+        {% for item in about_description %}
+          <div class="col-lg-4">
+            <h3 class="text-lg text-uppercase">
+              {{ item.number }}
+              <span class="font__color-orange">.</span>
+            </h3>
+
+            <h3>{{ item.title }}</h3>
+            <span class="font-size-lg">{{ item.description|safe }}</span>
+          </div>
+        {% endfor %}
+
+      </div>
+
+      <!-- ** -->
+
+      {% include 'windows/components/about_windows.html' with about_windows=about_windows %}
+    </div>
+
+  </section>
+  <!-- end: ABOUT - FANCY BOXES -->
+
+
+  <!-- PORTFOLIO -->
+  <section id="windows_portfolio" class="p-b-0 background-grey">
+    <div class="container">
+      <div class="heading-text heading-section">
+        <h2>Наши работы</h2>
+        <span class="font-size-lg">
+          Здесь вы найдете примеры наших успешных проектов
+          по установке окон и ремонту фурнитуры. Мы гордимся качеством
+          выполненных работ, обеспечивая надежность и долговечность
+          каждой конструкции!
+        </span>
+      </div>
+    </div>
+
+    <!-- ** -->
+
+    <!-- portfolio slider for mobile version -->
+    <div id="slider" class="inspiro-slider slider-fullscreen dots-creative portfolio__mobile-version" data-fade="true">
+
+      {% for item in portfolio %}
+        <div class="slide kenburns"
+             data-bg-image="{% static "windows/images/portfolio/" %}{{ item.img_big }}"
+        >
+          <div class="bg-overlay"></div>
+
+          <div class="container">
+            <div class="slide-captions text-center text-light">
+              <p>{{ item.img_alt }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+    <!-- end: portfolio slider for mobile version -->
+
+    <!-- ** -->
+
+    <!-- portfolio items for desktop version -->
+    <div class="portfolio portfolio__desktop-version">
+      <div id="portfolio" class="grid-layout portfolio-6-columns" data-margin="0">
+
+        {% for item in portfolio %}
+          <div class="portfolio-item img-zoom ct-photography ct-marketing ct-media">
+            <div class="portfolio-item-wrap">
+              <div class="portfolio-image">
+                <a href="#">
+                  <img src="{% static "windows/images/portfolio/" %}{{ item.img_small }}"
+                       alt="{{ item.alt }}"
+                  >
+                </a>
+              </div>
+
+              <div class="portfolio-description">
+                <a title="{{ item.img_alt }}"
+                   data-lightbox="image"
+                   href="{% static "windows/images/portfolio/" %}{{ item.img_big }}"
+                >
+                  <i class="icon-maximize"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+    <!-- end: portfolio items for desktop version -->
+
+  </section>
+  <!-- end: PORTFOLIO -->
+
+
+  <!-- SERVICES -->
+  <section id="windows_service" class="background-white">
+    <div class="container">
+      <div class="heading-text heading-section text-center">
+        <h2>Наши услуги</h2>
+        <p>
+          Мы предлагаем качественное остекление балконов, домов и квартир с
+          использованием пластиковых и алюминиевых конструкций. В нашем
+          ассортименте — окна для частных и коммерческих объектов, выполненные
+          по ГОСТ. Гарантируем высокую надёжность и долговечность продукции.
+        </p>
+      </div>
+
+      <div class="row">
+        <div id="portfolio" class="grid-layout portfolio-2-columns" data-margin="20">
+
+          {% for item in services %}
+            <div class="image-text__block-item portfolio-item no-overlay img-zoom">
+              <div class="portfolio-item-wrap">
+                <div class="image-text__block-item_image portfolio-image">
+                  <a href="#modalLogin"
+                     data-lightbox="inline"
+                  >
+                    <img src="{% static 'windows/images/services/' %}{{ item.img }}"
+                         alt="{{ item.description }}"
+                    >
+                  </a>
+                </div>
+                <div class="portfolio-description">
+                  <a href="#modalLogin"
+                     data-lightbox="inline"
+                  >
+                    <h3>{{ item.title }}</h3>
+                    <p class="font-size-lg">{{ item.description }}</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- end: SERVICES -->
+
+
+  <!-- CLIENTS -->
+  <section id="windows_clients" class="p-t-60"  style="background-image:url({% static 'windows/images/clients/fon.png' %});">
+    <div class="container">
+      <div class="heading-text heading-section text-center">
+        <h2>Нам доверяют</h2>
+        <span class="lead">
+          Наши партнеры доверяют нам, и мы гордимся долгосрочными отношениями
+          с ведущими компаниями, обеспечивая высокое качество остекления
+          и надежные решения для бизнеса.
+        </span>
+      </div>
+      <div class="carousel client-logos"
+           data-items="6"
+           data-items-sm="4"
+           data-items-xs="3"
+           data-items-xxs="2"
+           data-margin="20"
+           data-arrows="false"
+           data-autoplay="true"
+           data-autoplay="3000"
+           data-loop="true"
+      >
+        <div>
+          <a href="https://www.dsk1.ru/" target="_blank"><img alt="ДСК" src="{% static 'windows/images/clients/dsk.png' %}"></a>
+        </div>
+        <div>
+          <a href="https://rss48.ru/" target="_blank"><img alt="Ремстрой сервис" src="{% static 'windows/images/clients/rem_stroy_servis.png' %}"></a>
+        </div>
+        <div>
+          <a href="https://su11.ru/" target="_blank"><img alt="Су-11" src="{% static 'windows/images/clients/su-11.png' %}"></a>
+        </div>
+        <div>
+          <a href="https://sm2010.ru/" target="_blank"><img alt="Строймастер" src="{% static 'windows/images/clients/stroy_master.png' %}"></a>
+        </div>
+        <div>
+          <a href="https://lipetskstroy.ru/" target="_blank"><img alt="ТрестЛипецкСтрой" src="{% static 'windows/images/clients/trest_lipetsk_stroy.png' %}"></a>
+        </div>
+        <div>
+          <a href="https://instep.city/" target="_blank"><img alt="Инстеп" src="{% static 'windows/images/clients/instep.png' %}"></a>
+        </div>
+        <div>
+          <a href="https://globus-grupp.ru/" target="_blank"><img alt="ГлобусГрупп" src="{% static 'windows/images/clients/globus_group.png' %}"></a>
+        </div>
+        <div>
+          <a href="https://sber-stroi.ru/" target="_blank"><img alt="СБР-Строй" src="{% static 'windows/images/clients/sber_sroy.png' %}"></a>
+        </div>
+        <div>
+          <a href="https://garantstroit.ru/" target="_blank"><img alt="ГарантСтрой" src="{% static 'windows/images/clients/garant_stoy.png' %}"></a>
+        </div>
+        <div>
+          <a href="https://sfera48.ru/" target="_blank"><img alt="Сфера" src="{% static 'windows/images/clients/sfera.png' %}"></a>
+        </div>
+        <div>
+          <a href="https://www.zskl.ru/" target="_blank"><img alt="ЗСК" src="{% static 'windows/images/clients/zsk.png' %}"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end: CLIENTS -->
+
+
+  <!-- COUNTERS -->
+  <section id="windows_counters" class="text-light p-t-150 p-b-150 " data-bg-parallax="images/parallax/12.jpg">
+    <div class="bg-overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="text-center">
+            <div class="icon"><i class="fa fa-3x fa-user"></i></div>
+            <div class="counter"> <span data-speed="3000" data-refresh-interval="50" data-to="45000" data-from="600" data-seperator="true"></span> м2 </div>
+            <div class="seperator seperator-small"></div>
+            <p>ОСТЕКЛИЛИ</p>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="text-center">
+            <div class="icon"><i class="fa fa-3x fa-clock"></i></div>
+            <div class="counter"> <span data-speed="4500" data-refresh-interval="23" data-to="200" data-from="50" data-seperator="true"></span> </div>
+            <div class="seperator seperator-small"></div>
+            <p>ОКОН В СУТКИ</p>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="text-center">
+            <div class="icon"><i class="fa fa-3x fa-building"></i></div>
+            <div class="counter"> <span data-speed="3000" data-refresh-interval="12" data-to="35" data-from="50" data-seperator="true"></span> </div>
+            <div class="seperator seperator-small"></div>
+            <p>МНОГОКВАРТИРНЫХ ДОМОВ</p>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="text-center">
+            <div class="icon"><i class="fa fa-3x fa-wrench"></i></div>
+            <div class="counter"> <span data-speed="4550" data-refresh-interval="50" data-to="2300" data-from="48" data-seperator="true"></span> м2</div>
+            <div class="seperator seperator-small"></div>
+            <p>ПРОИЗВОДСТВЕННЫЕ МОЩНОСТИ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end: COUNTERS -->
+
+
+{% endblock %}

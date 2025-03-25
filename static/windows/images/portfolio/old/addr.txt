@@ -1,0 +1,57 @@
+PORTFOLIO = [
+    {
+        'img_small': 'small_portf_2.jpg',
+        'img_big': 'big_portf_2.jpg',
+        'img_alt': 'ЖК Атмосфера 2.0 - корп. 1, ул. Игнатьева Ф.С., д, Липецк',
+    },
+    {
+        'img_small': 'small_portf_3.jpg',
+        'img_big': 'big_portf_3.jpg',
+        'img_alt': 'Липецка, ул. Коцаря, 3',
+    },
+    {
+        'img_small': 'small_portf_4.jpg',
+        'img_big': 'big_portf_4.jpg',
+        'img_alt': 'Липецк, ул. Скороходова, 25',
+    },
+    {
+        'img_small': 'small_portf_5.jpg',
+        'img_big': 'big_portf_5.jpg',
+        'img_alt': 'Липецк, мкрн. Звездный, ул.Опытная д.20',
+    },
+    {
+        'img_small': 'small_portf_6.jpg',
+        'img_big': 'big_portf_6.jpg',
+        'img_alt': 'Липецк, Шевченко-7, ЖК Босфор',
+    },
+    {
+        'img_small': 'small_portf_7.jpg',
+        'img_big': 'big_portf_7.jpg',
+        'img_alt': 'Липецк, пер. Балакирева, 1',
+    },
+    {
+        'img_small': 'small_portf_8.jpg',
+        'img_big': 'big_portf_8.jpg',
+        'img_alt': 'Липецк, Звездный, ул. С.Казьмина, д 2',
+    },
+    {
+        'img_small': 'small_portf_9.jpg',
+        'img_big': 'big_portf_9.jpg',
+        'img_alt': 'Липецк, Звездный, ул. С.Казьмина, д. 5, 6, 7',
+    },
+    {
+        'img_small': 'small_portf_10.jpg',
+        'img_big': 'big_portf_10.jpg',
+        'img_alt': 'Липецк, Звездный, ул. С.Казьмина, д. 4',
+    },
+    {
+        'img_small': 'small_portf_11.jpg',
+        'img_big': 'big_portf_11.jpg',
+        'img_alt': 'Липецк, Звездный, ул. Опытная, д. 18',
+    },
+    {
+        'img_small': 'small_portf_12.jpg',
+        'img_big': 'big_portf_12.jpg',
+        'img_alt': 'Липецк, Звездный, ул. С.Казьмина, д. 1',
+    },
+]

@@ -1,0 +1,313 @@
+{% extends 'common/layout.html' %}
+{% load static %}
+
+
+{# ** #}
+
+
+{% block title %}{{ SEO_title }}{% endblock %}
+{% block content %}
+
+  <!-- INSPIRO SLIDER -->
+  <div id="slider"
+       class="inspiro-slider slider-fullscreen dots-creative"
+       data-height-xs="360"
+       data-autoplay="4700"
+       data-animate-in="fadeIn"
+       data-animate-out="fadeOut"
+       data-items="1" data-loop="true"
+       data-fade="true"
+       data-autoplay="true"
+  >
+
+    <!-- Slide's -->
+    {% for slider in sliders %}
+
+      <div class="slide" data-bg-video="{% static 'slider/' %}{{ slider.video_html }}">
+        <div class="bg-overlay"></div>
+
+        <div class="container">
+          <div class="slide-captions text-center text-light">
+            <!-- Captions -->
+            <h1 data-caption-animate="zoom-out" class="text-shadow-dark">{{ slider.title|safe }}</h1>
+            <p class="text-shadow-dark">{{ slider.description|safe }}</p>
+
+            {% if slider.btn_show %}
+              <div>
+                <a href="{% url slider.btn_url %}" class="btn btn__color-orange">
+                  {{ slider.btn_caption }}
+                </a>
+              </div>
+            {% endif %}
+            <!-- end: Captions -->
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+    <!-- end: Slide's -->
+
+  </div>
+  <!--end: INSPIRO SLIDER -->
+
+
+  <!-- GLAZING FRAMELESS -->
+  <section id="glazing_frameless" class="background-white">
+    <div class="container">
+      <div class="heading-text heading-section text-center">
+        <h2>Современные решения для <span class="font__color-orange">безрамного</span> остекления</h2>
+        <p>
+          Безрамное остекление - современное решение для создания прозрачных и
+          функциональных конструкций. Оно улучшает внешний вид, защищает от
+          внешних факторов и подходит для балконов, фасадов, террас, перегородок
+          и общественных зон, обеспечивая комфорт и светопропускание.
+        </p>
+      </div>
+
+      <div class="row">
+        <div id="portfolio" class="grid-layout portfolio-2-columns" data-margin="20">
+
+          {% for item in glazing_frameless %}
+            <div class="portfolio-item no-overlay img-zoom">
+              <div class="portfolio-item-wrap">
+                <div class="image-text__block-item_image portfolio-image">
+                  <a href="{% url 'home:glazing_frameless_detail' item.pk %}">
+                    <img src="{% static 'home/images/glazing_frameless/' %}{{ item.image_name }}"
+                         alt="{{ item.title }}"
+                    >
+                  </a>
+                </div>
+
+                <div class="portfolio-description">
+                  <a href="{% url 'home:glazing_frameless_detail' item.pk %}">
+                    <h3>{{ item.title }}</h3>
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- end: GLAZING FRAMELESS -->
+
+
+  <!-- ADVANTAGES -->
+  <section id="advantages" class="box-fancy section-fullwidth text-light pb-0 pt-0">
+    <div class="row">
+
+      {% for item in advantages %}
+
+        {# четное - НЕ четное #}
+        <div style="background-color: {% if forloop.counter|divisibleby:2 %}#3D4045{% else %}#505358{% endif %}" class="col-lg-4">
+          <div class="icon-box medium fancy">
+            <h2 class="text-lg text-uppercase">0{{ forloop.counter }}.</h2>
+
+            <div class="icon"><i class="{{ item.fa_icon }}"></i></div>
+            <h4 class="mb-5 font-size-xl">{{ item.title }}</h4>
+
+            <p class="mt-5">{{ item.description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </section>
+  <!-- end: ADVANTAGES -->
+
+
+  <!-- GLAZING FRAMELESS TYPES -->
+  <section id="glazing_frameless_types" class="background-grey">
+    <div class="container">
+      <div class="heading-text heading-section text-center">
+        <h2><span class="font__color-orange">Типы</span> безрамного остекления</h2>
+      </div>
+    </div>
+
+    <div class="container">
+
+      {% for type in glazing_frameless_types %}
+        <div class="row glazing-types__item-wrapper">
+          <div class="col-lg-5 no-padding">
+            <img alt="{{ type.title }}"
+                 src="{% static 'home/images/glazing_type/' %}{{ type.image_name }}"
+                 class="img-fluid no-margin no-padding">
+          </div>
+
+          <div class="col-lg-7 glazing-types__content">
+            <h3 class="text-bold">{{ type.title }}</h3>
+            <p class="font-size-lg">{{ type.description|safe }}</p>
+
+            <div class="clear"></div>
+
+            <a href="{% url 'home:glazing_frameless_type_detail' type.pk %}"
+               class="item-link btn-link__box"
+            >
+              <b class="btn-link">Подробнее</b>
+              <i class="fa fa-arrow-right btn-link__color-custom"></i>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </section>
+  <!-- end: GLAZING FRAMELESS TYPES -->
+
+
+  <!-- DECORATIONS -->
+  <section id="decorations" class="pt-0">
+    <div class="portfolio-4-columns" data-margin="0">
+      <div class="portfolio">
+
+        <div class="heading-text heading-section text-center">
+          <h2>Виды <span class="font__color-orange">декорирования</span></h2>
+        </div>
+
+        <div class="container">
+          <div class="tabs tabs-vertical">
+          <div class="row">
+            <div class="col-md-3">
+              <ul class="nav flex-column nav-tabs" role="tablist" aria-orientation="vertical">
+                <li class="nav-item">
+                  <a class="nav-link active" data-bs-toggle="tab" href="#decoration-tab-1" aria-selected="true">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#decoration-tab-2" aria-selected="false">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#decoration-tab-3" aria-selected="false">Contact</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-md-9">
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="decoration-tab-1">
+                  <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam
+                    et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. </p>
+                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+                    sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                </div>
+
+                <div class="tab-pane fade" id="decoration-tab-2">
+                  <p>Omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                  </p>
+                  <p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
+                    mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                </div>
+
+                <div class="tab-pane fade" id="decoration-tab-3">
+                  <p>Soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+                    aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- end: DECORATIONS -->
+
+
+  <!-- QUESTIONS -->
+  <section id="questions">
+    <div class="container">
+      <div class="heading-text heading-section text-center">
+        <h2>Вопросы и <span class="font__color-orange">ответы</span></h2>
+      </div>
+    </div>
+
+    <div class="container" >
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="accordion toggle fancy clean">
+
+            {% for quest in questions %}
+              <div class="ac-item">
+                <h5 class="ac-title font-size-lg">{{ quest.title|upper }}</h5>
+                <div class="ac-content font-size-lg" style="display: none;">
+                  {{ quest.description }}
+                </div>
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end: QUESTIONS -->
+
+
+  <!-- Contact -->
+  <section id="contacts" class="p-b-200" style="background-image:url({% static 'home/images/contacts/background.png' %}); background-position:71% 8%;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="col-lg-12">
+            <div class="heading-text heading-section">
+              <h2>Контакты</h2>
+            </div>
+
+            <!-- TODO: временно убрали классы, тк нет норм фото -->
+            <div class="testimonial testimonial-box _float-left _clear">
+              <div class="testimonial-item">
+                <p>
+                  <strong>Адрес:</strong>
+                  Мы <a href="{{ yandex_geo_link_context }}" class="font__color-orange" target="_blank"><i class="fa fa-map-marker-alt"></i> находимся</a>
+                  за магазином Добрострой
+                </p>
+                <span class="font-size-lg">Липецк, Трубный проезд, вл. 1Е, вход через базу</span>
+              </div>
+
+              <div class="testimonial-item">
+                <p>Номер телефона:</p>
+                <span class="font-size-lg">
+                <a href="tel:{{ contact_phone_context }}" class="font__color-black">
+                  <i class="fa fa-phone font__color-orange"></i> {{ contact_phone_context }}
+                </a>
+              </span>
+              </div>
+
+              <div class="testimonial-item">
+                <p>Электронная почта:</p>
+                <span class="font-size-lg">
+                <i class="far fa-envelope font__color-orange"></i>
+                  <a href="mailto:{{ user_email_context }}" class="font__color-black">Написать нам</a>
+              </span>
+              </div>
+            </div>
+
+            <!-- TODO: временно убрали, тк нет норм фото -->
+{#            <div class="col-lg-6 float-right clear">#}
+{#              <img src="{% static 'home/images/contacts/office.jpg' %}"#}
+{#                   class="img-fluid"#}
+{#                   alt="Офис Проф-Лайн">#}
+{#            </div>#}
+          </div>
+        </div>
+
+{#        ... #}
+      </div>
+    </div>
+  </section>
+  <!-- end: Contact -->
+  <!-- MAP -->
+  <section class="no-padding">
+    <script type="text/javascript"
+            charset="utf-8"
+            async
+            type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A11c3ee8ddd592e13e2762dd49598b8725037675623212de3e5a691cbd5a96516&amp;width=100%25&amp;height=460&amp;lang=ru_RU&amp;scroll=false"
+    ></script>
+  </section>
+  <!-- end: MAP -->
+
+
+{% endblock %}

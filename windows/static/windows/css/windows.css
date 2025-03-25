@@ -1,0 +1,40 @@
+:root {
+  --orange-color: #FA840B;
+}
+
+
+/* ABOUT - FANCY BOXES ----------------------------------------------------- */
+.heading-text.heading-line.heading-line__color-orange h4:before {
+  background-color: var(--orange-color) !important;
+}
+
+.about__fancy-boxes_post {
+  color: #77797B !important;
+  line-height: 20px;
+  margin: 0;
+}
+
+.about__fancy-boxes_wrapper {
+  height: 25px;
+  margin: 0 0 4px 0;
+}
+
+
+/* PORTFOLIO --------------------------------------------------------------- */
+.portfolio__mobile-version {
+  display: none;
+}
+
+.portfolio__desktop-version {
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .portfolio__mobile-version {
+    display: block;
+  }
+
+  .portfolio__desktop-version {
+    display:none ;
+  }
+}

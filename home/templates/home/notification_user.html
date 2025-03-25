@@ -1,0 +1,35 @@
+{% extends 'common/layout.html' %}
+{% load static %}
+
+
+{# ** #}
+
+
+{% block title %}{% endblock %}
+
+{% block content %}
+  <section class="m-t-80 p-b-150">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="page-error-404 text-center">{{ img }}</div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="text-start">
+            {% autoescape off %}
+              <h1 class="text-medium">{{ title }}</h1>
+              <p class="lead">{{ text }}</p>
+            {% endautoescape %}
+
+            <div class="seperator m-t-20 m-b-20"></div>
+
+            <a href="{% url 'home:index'%}" class="btn btn__color-orange">
+              На главную
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

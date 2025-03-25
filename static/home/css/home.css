@@ -1,0 +1,124 @@
+
+/* GLAZING FRAMELESS TYPES ------------------------------------------------- */
+.glazing-types__item-wrapper {
+  margin-bottom: 30px;
+  border: 2px solid #F4F4F4;
+  background: white;
+  border-radius: 8px;
+}
+
+.glazing-types__item-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+.glazing-types__item-wrapper .col-lg-5 {
+  border-radius: 8px;
+}
+
+.glazing-types__item-wrapper .col-lg-5 img {
+  border-radius: 8px;
+}
+
+.glazing-types__content {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.glazing-types__content .btn-link__box {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+
+.glazing-types__content .btn-link__box:hover,
+.glazing-types__content .btn-link__box:focus,
+.glazing-types__content .btn-link__box:active {
+  color: var(--orange-color) !important;
+}
+
+@media (max-width: 991px) {
+  .glazing-types__content {
+    position: static;
+  }
+
+  .glazing-types__content .btn-link__box {
+    position: static;
+    bottom: auto;
+    right: auto;
+  }
+
+}
+
+.glazing-types__video-wrapper {
+  border-radius: 8px;
+}
+
+
+/* GLAZING FRAMELESS TYPES DETAIL ------------------------------------------ */
+.glazing-types__content-detail {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.glazing-types__content-detail .btn-glazing__detail {
+  position: absolute !important;
+  bottom: 20px !important;
+  right: 20px !important;
+}
+
+@media (max-width: 991px) {
+  .glazing-types__content-detail .btn-glazing__detail {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    margin: 10px auto 10px auto;
+  }
+}
+
+.glazing-types__content-detail_wrapper {
+  width: 100%;
+}
+
+.glazing-types__content-detail_characteristics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px; /* Отступ между элементами */
+}
+
+.glazing-types__content-detail_characteristics p {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.glazing-types__content-detail_characteristics span {
+  text-align: right;
+  flex-grow: 1;
+}
+
+/**/
+
+.glazing-types__content-movement {
+  min-height: 238px;
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+  -webkit-transition: background 0.4s ease 0s;
+  transition: background 0.4s ease 0s;
+  cursor: pointer;
+  background: #fbfbfb;
+  border:2px solid #F4F4F4;
+}
+
+.glazing-types__content-movement h3 span {
+  color: var(--orange-color);
+}
+
+
+/* DECORATIONS ------------------------------------------------------------- */
+#decorations .nav-tabs .active,
+#decorations .nav-tabs .nav-link:hover {
+  color: var(--orange-color) !important;
+}

@@ -1,0 +1,263 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="author" content="INSPIRO" />
+  <meta name="description" content="Proff-l.ru — безрамное остекление для террас, веранд и балконов. Мы предлагаем качественные и долговечные системы с установкой. Стильный дизайн, высокое качество и надежность.">
+  <link rel="icon" type="image/png" href="{% static 'common/favicon.ico' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- SEO: begin -->
+  <title>
+    {% block title %}{% endblock %}
+  </title>
+
+  <!-- NOTE: Google Tag Manager -->
+  <script type="text/javascript" >
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5LZN767');
+  </script>
+  <!-- NOTE: end: Google Tag Manager -->
+
+  <!-- NOTE: Google Tag Manager (noscript) -->
+  <noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-5LZN767"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- NOTE: End Google Tag Manager (noscript) -->
+
+  <!-- NOTE: yandex-verification -->
+  <meta name="yandex-verification" content="8ad1cc0131f825a0" />
+  <meta name="google-site-verification" content=""/>
+  <!-- NOTE: end: yandex-verification -->
+
+  <!-- Yandex.Metrika counter -->
+  <!-- /Yandex.Metrika counter -->
+
+
+  <!-- SEO: end -->
+
+
+  <!-- Stylesheets & Fonts -->
+  <link href="{% static 'common/css/plugins.css' %}" rel="stylesheet">
+  <link href="{% static 'common/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'common/css/general.css' %}" rel="stylesheet">
+
+  <!-- App's Stylesheets -->
+  <link href="{% static 'home/css/home.css' %}" rel="stylesheet">
+  <link href="{% static 'windows/css/windows.css' %}" rel="stylesheet">
+
+  <!-- Different supporting scripts -->
+  <script type='text/javascript'
+          src="{% static 'common/js/imask-feedback-modal.js' %}"
+          id='e-sticky-js'>
+  </script>
+</head>
+
+
+<!-- * ------------------------------------------------------------------ * -->
+
+
+<body>
+  <!-- SEO: begin -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PL7G6R7T"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden">
+    </iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- SEO: end -->
+
+  <!-- Body Inner -->
+  <div class="body-inner">
+
+    <!-- Header -->
+    <header id="header" data-transparent="true" data-fullwidth="true" class="dark submenu-light">
+      <div class="header-inner">
+        <div class="container">
+        
+          <!--Logo-->
+
+          <div id="logo" class="main-logo__center">
+            <img width="50" height="50" src="{% static 'common/logo.png' %}" alt="ПРОФ-ЛАЙН, Ремонт пластиковых окон и дверей ПВХ">
+
+            {% if request.path == '/' or request.path == '/windows/' %}
+              <a href="{% url 'home:index'%}" class="header-menu__wrapper_color-white">
+            {% else %}
+              <a href="{% url 'home:index'%}" class="header-menu__wrapper_color-dark">
+            {% endif %}
+
+              {# появляющиеся меню, ПОСЛЕ скрола #}
+              <span class="logo-default font-size-lg">
+                ПРОФ-ЛАЙН
+                <p class="font-size-lg text-bold">гарантия качества</p>
+              </span>
+
+              {# статик меню БЕЗ скролла #}
+              <span class="logo-dark font-size-lg header__without-scroll_title">
+                ПРОФ-ЛАЙН
+                <p class="font-size-lg text-bold text-white header__without-scroll_slogan">гарантия качества</p>
+              </span>
+            </a>
+          </div>
+          <!--End: Logo-->
+
+          <!--Navigation Resposnive Trigger-->
+          <div id="mainMenu-trigger">
+            <a class="lines-button x"><span class="lines"></span></a>
+          </div>
+          <!--end: Navigation Resposnive Trigger-->
+
+
+          <!--Navigation-->
+          {# скрываем меню для заданных страниц #}
+          {% if "/success_mail/" not in request.path %}
+            {% include "common/components/header_menu.html" %}
+          {% endif %}
+          <!--end: Navigation-->
+        </div>
+      </div>
+    </header>
+    <!-- end: Header -->
+
+
+    {% block content %}{% endblock %}
+
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="footer-content">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-4  col-lg-2 col-md-4">
+              <div class="widget  widget-contact-us" style="background-image: url('{% static "/footer/world-map-dark.png" %}'); background-position: 50% 20px; background-repeat: no-repeat">
+                <h4>Контакты</h4>
+                <ul class="list-icon footer-menu__link">
+                  <li>
+                    <a href="{{ yandex_geo_link_context }}" target="_blank">
+                      <i class="fa fa-map-marker-alt"></i>
+                      Россия, Липецк, Трубный проезд, вл1Е
+                    </a>
+                  </li>
+                  <li>
+                    <i class="fa fa-phone"></i>
+                    <a href="tel:{{ contact_phone_context }}">{{ contact_phone_context }}</a>
+                  </li>
+                  <li>
+                    <i class="far fa-envelope"></i>
+                    <a href="mailto:{{ user_email_context }}">Написать нам</a> </li>
+                  <li>
+                    <br>
+                    <i class="far fa-clock"></i>
+                    Пн - Пт: <strong>08:00 - 17:00</strong>
+                    <br>
+                    Сб, Вс: <strong>Закрыто</strong> </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="widget">
+                <div class="widget-title">Навигация</div>
+                <ul class="list footer-menu__link">
+                  <li><a href="{% url 'home:index' %}">Главная</a></li>
+                  <li><a href="{% url 'windows:index' %}">Окна ПВХ</a></li>
+                  <li><a href="{% url 'home:index' %}#contacts">Контакты</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="widget">
+                <div class="widget-title">Ремонт окон</div>
+                <p class="mb-5">
+                  Наше подразделение
+                </p>
+                <a href="https://service.proff-l.ru/"
+                   class="btn btn__color-orange"
+                   target="_blank"
+                >
+                  Перейти
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <!-- Social icons -->
+              <div class="social-icons social-icons-colored float-left">
+                <ul>
+                  <li class="social-instagram">
+                    <a href="{{ whatsapp_number_context }}"
+                       class="btn-social btn-outline"
+                       target="_blank"
+                    >
+                      <i class="fab fa-whatsapp"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- end: Social icons -->
+            </div>
+
+            <div class="col-lg-12">
+              <div class="copyright-text text-center">
+                &copy; 2024 ПРОФ-ЛАЙН - Все права защищены.
+                <br>
+                Информация, опубликованная на сайте, носит общий характер и
+                служит для ознакомительных целей, не является офертой.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end: Footer -->
+  </div>
+  <!-- end: Body Inner -->
+
+
+  <!-- DIFFERENT COMPONENTS -->
+  {% include "common/components/template_feedback_modal.html" %}
+  {% include "common/components/whatsapp_float.html" %}
+  {% include "common/components/phone_ring_float.html" %}
+  
+  <!-- Scroll top -->
+  <a id="scrollTop">
+    <i class="icon-chevron-up"></i>
+    <i class="icon-chevron-up"></i>
+  </a>
+  <!-- end: DIFFERENT COMPONENTS -->
+
+
+  <!-- ** -->
+
+
+  <!--Plugins-->
+  <script src="{% static 'common/js/jquery.js' %}"></script>
+  <script src="{% static 'common/js/plugins.js' %}"></script>
+
+  <!--Template functions-->
+  <script src="{% static 'common/js/functions.js' %}"></script>
+
+  <!-- NOTE: EnvyBox, for SEO -->
+{#  <link rel="stylesheet" href="https://cdn.envybox.io/widget/cbk.css">#}
+{#  <script type="text/javascript" src="https://cdn.envybox.io/widget/cbk.js?wcb_code=5ca34f2e3e5bc26557616a5b2c4e9a44" charset="UTF-8" async></script>#}
+  <!-- NOTE: end: EnvyBox, for SEO -->
+</body>
+</html>

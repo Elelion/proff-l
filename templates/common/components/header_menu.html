@@ -1,0 +1,64 @@
+<div id="mainMenu">
+  <div class="container">
+    <nav>
+      {% if request.path == '/' or request.path == '/windows/' %}
+        <ul>
+      {% else %}
+        <ul class="header-menu__dark-color">
+      {% endif %}
+
+        <li><a href="{% url 'home:index' %}"><span>Главная</span></a></li>
+    
+        <!-- ** -->
+
+        <li class="dropdown"><a href="#"><span>Услуги <i class="fa fa-arrow-down btn-link__color-custom" aria-hidden="true"></i></span></a>
+          <ul class="dropdown-menu" style="">
+            {% for frameless in menu_glazing_frameless_context %}
+              <li>
+                <a href="{% url 'home:glazing_frameless_detail' frameless.pk %}">
+                  {{ frameless.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        <!-- ** -->
+  
+        <li class="dropdown"><a href="#"><span>Виды систем <i class="fa fa-arrow-down btn-link__color-custom" aria-hidden="true"></i></span></a>
+          <ul class="dropdown-menu" style="">
+            {% for type in menu_glazing_frameless_types_context %}
+              <li>
+                <a href="{% url 'home:glazing_frameless_type_detail' type.pk %}">
+                  {{ type.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        <!-- ** -->
+  
+        <li><a href="{% url 'windows:index' %}"><span>Окна ПВХ</span></a></li>
+
+        <!-- ** -->
+    
+        <li><a href="{% url 'home:index' %}#contacts"><span>Контакты</span></a></li>
+
+        <!-- ** -->
+  
+        <li>
+          <div class="slide-captions text-center text-light">
+            <a href="#modalLogin"
+               data-lightbox="inline"
+               class="btn btn-modal btn__color-orange btn-header__callback"
+            >
+              Обратный звонок
+            </a>
+          </div>
+        </li>
+    
+      </ul>
+    </nav>
+  </div>
+</div>
